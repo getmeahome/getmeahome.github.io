@@ -1,0 +1,146 @@
+.pricing-plan {
+	border: .1rem solid #f5f5f5;
+	border-radius: 4px;
+	margin: .5em;
+	text-align: center!important;
+}
+.pricing-plan-start {
+	border-top: 10px solid #a072ff!important;
+}
+.pricing-plan-standard {
+	border-top: 10px solid #beff22!important;
+}
+.pricing-plan-premium {
+	border-top: 10px solid #512da4!important;
+}
+.plan-header {
+	font-size: 1.45rem!important;
+	font-weight: 600;
+	padding: .75em;
+	border-bottom: 1px solid #f1f1f1;
+}
+.plan-helper {
+	font-size: 15px;
+	color: #a09d9d;
+}
+.plan-price {
+	font-size: .75rem;
+	font-weight: 400;
+	padding: .75em;
+}
+.plan-items {
+	margin: .5em;
+}
+.plan-item {
+	font-size: .9em;
+	color: #191818!important;
+	background: 0 0!important;
+	padding: .25em!important;
+}
+.plan-footer {
+	padding: .75em;
+	margin-top: auto;
+}
+.plan-price-amount {
+	font-size: 2.5rem;
+	font-weight: 700;
+}
+.plan-price-currency {
+	vertical-align: super;
+	font-size: 1rem!important;
+	font-weight: 400!important;
+	margin-right: .25rem;
+}
+.plan-buy {
+	margin-bottom: .25rem;
+}
+
+.attention {
+	color: #353ebd;
+}
+
+.small-note {
+	font-size: .75rem!important;
+}
+.small-note-number {
+	vertical-align: super;
+	font-size: .60rem!important;
+	font-weight: 400!important;
+	margin-right: .25rem;
+}
+
+.button {
+	padding: .25rem;
+	padding-right: 1rem;
+	padding-left: 1rem;
+	background-color: #353ebd;
+	background-size: 21px;
+	border-radius: 4px;
+	cursor: pointer;
+	border-style: none;
+	color: #fff;
+}
+
+input {
+	border-radius: 4px;
+	border-style: solid;
+	border-color: #353ebd;
+	border-width: .15rem;
+}
+
+.av-checkbox {
+	margin-right: .75rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .popup{
+  	width: 70%;
+  }
+}
