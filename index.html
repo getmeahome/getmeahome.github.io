@@ -23,7 +23,7 @@
 	<meta property="og:title" content="Home | Welcome">
 	<meta property="og:image" content="resources/getmeahome-cover.jpg">
 	
-	<title>Get Me A Home | Speedu bot</title>
+	<title>Get Me A Home | Welcome</title>
 	<link rel="stylesheet" type="text/css" media="all" href="rw_common/themes/Future/consolidated.css?rwcache=557978341" />
 	<link rel="stylesheet" type="text/css" media="all" href="custom/styles.css">
 </head>
@@ -37,7 +37,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav ml-auto"><li class="nav-item active"><a href="./" rel="" class="nav-link">Home</a></li><li class="nav-item"><a href="markdown/" rel="" class="nav-link">FAQ</a></li></ul>
+				<ul class="navbar-nav ml-auto"><li class="nav-item active"><a href="./" rel="" class="nav-link">Home</a></li><li class="nav-item"><a href="faq/" rel="" class="nav-link">FAQ</a></li></ul>
 			</div>
 		</div>
 	</nav>
@@ -94,9 +94,9 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col pricing-plan pricing-plan-start">
+		<div class="col pricing-plan pricing-plan-basic">
 			<div class="plan-header">
-                Start
+                Basic
             	<p class="plan-helper">Para quem <b>não</b> tem urgência</p>
             </div>
             <div class="plan-price">
@@ -110,23 +110,23 @@
 	            <div class="plan-item">Limitado a <b>20 anúncios</b></div>
 	        </div>
             <div class="plan-footer">
-				<form class="plan-buy" action="http://localhost:5000/basic" method="POST">
+				<form class="plan-buy" action="http://localhost:5000/plan/basic" method="POST">
 				  <script
 				    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 				    data-key="pk_test_5WUc6izSVmCtGjR41nvKCzDX"
 				    data-amount="599"
 				    data-name="Get Me A Home"
-				    data-description="Start (3 dias)"
+				    data-description="Basic (3 dias)"
 				    data-image="https://github.com/getmeahome/getmeahome.github.io/raw/master/resources/GetMeAHome-logo-180.png"
 				    data-locale="auto"
 				    data-currency="eur"
-				    data-panel-label="Start"
+				    data-panel-label="Basic"
 				    data-label="Cartão de Crédito"
 				    data-allow-remember-me="false">
 				  </script>
 				</form>
 
-				<a href="#mbway"><button class="plan-buy stripe-button-el"><span style="display: block; min-height: 30px;">MB Way</span></button></a>
+				<a href="#mbway-basic"><button class="plan-buy stripe-button-el"><span style="display: block; min-height: 30px;">MB Way</span></button></a>
             </div>
 		</div>
 		<div class="col pricing-plan pricing-plan-standard">
@@ -141,7 +141,7 @@
             	<span class="plan-price-amount"><span class="plan-price-currency">€</span>9,95</span>/7 dias
             </div>
             <div class="small-note attention">
-            	<b>-17%</b> (promoção válida até ao final do mês de Setembro)
+            	<b>-17%</b> (promoção válida até ao final do mês de Outubro)
             </div>
             <div class="plan-items">
 	            <div class="plan-item"><b>Inclui:</b></div>
@@ -151,7 +151,7 @@
 	            <div class="plan-item">Limitado a <b>40 anúncios</b></div>
 	        </div>
             <div class="plan-footer">
-					
+				<form class="plan-buy" action="http://localhost:5000/plan/standard" method="POST">
 				  <script
 				    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 				    data-key="pk_test_5WUc6izSVmCtGjR41nvKCzDX"
@@ -167,7 +167,7 @@
 				  </script>
 				</form>
 
-				<a href="#mbway"><button class="plan-buy stripe-button-el"><span style="display: block; min-height: 30px;">MB Way</span></button></a>
+				<a href="#mbway-standard"><button class="plan-buy stripe-button-el"><span style="display: block; min-height: 30px;">MB Way</span></button></a>
             </div>
 		</div>
 		<div class="col pricing-plan pricing-plan-premium">
@@ -182,7 +182,7 @@
             	<span class="plan-price-amount"><span class="plan-price-currency">€</span>49,99</span>/30 dias
             </div>
             <div class="small-note attention">
-            	<b>-50%</b> (promoção válida até ao final do mês de Setembro)
+            	<b>-50%</b> (promoção válida até ao final do mês de Outubro)
             </div>
             <div class="plan-items">
 	            <div class="plan-item"><b>Inclui:</b></div>
@@ -193,7 +193,7 @@
 	            <div class="plan-item">Com possibilidade de <b>adicionar sites de imobiliário</b> que ainda não damos suporte</div>
 	        </div>
             <div class="plan-footer">
-				<form class="plan-buy" action="http://localhost:5000/premium" method="POST">
+				<form class="plan-buy" action="http://localhost:5000/plan/premium" method="POST">
 				  <script
 				    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 				    data-key="pk_test_5WUc6izSVmCtGjR41nvKCzDX"
@@ -209,7 +209,7 @@
 				  </script>
 				</form>
 
-				<a href="#mbway"><button class="plan-buy stripe-button-el"><span style="display: block; min-height: 30px;">MB Way</span></button></a>
+				<a href="#mbway-premium"><button class="plan-buy stripe-button-el"><span style="display: block; min-height: 30px;">MB Way</span></button></a>
             </div>
 		</div>
 	</div>
@@ -219,57 +219,38 @@
 	[1] As pesquisas de anúncios são efectuadas em horários estratégicos e irá receber os resultados após o nosso motor de pesquisa percorrer todos os sites de imobiliário que damos suporte. Contudo, poderá escolher outro horário da sua preferência para receber os seus resultados.
 </div>
 
-<div id="mbway" class="overlay">
-	<div class="popup">
-		<h2>MB Way</h2>
-		<a class="close" href="#plans">&times;</a>
-		<div>
-			<form action="http://localhost:5000/mbway" method="POST">
-				<div>
-					<label for="mbway-Contact">Número de telemóvel associado ao MB Way:<span class="asterisk">*</span></label>
-					<input type="text" value="" name="Contact" id="mbway-Contact">
-				</div>
-				<br>
-				<input type="submit" value="Enviar" name="send" class="button">
-			</form>
-			<div class="small-note"><span class="asterisk">*</span> O número de telemóvel apenas será utilizado para questões de pagamento por MB Way.</div>
-		</div>
-	</div>
-</div>
-
                     </div>
 
-                    <div class="col-sm-12 sidebar">
+                    <div class="col-sm-12">
                         <h2>Newsletter</h2>
 <!-- Begin MailChimp Signup Form -->
 <div id="mc_embed_signup">
 <form action="https://club.us19.list-manage.com/subscribe/post?u=48286dfbc4d36790827b967ea&amp;id=e159d25bbc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
-
-<div class="small-note"><span class="asterisk">*</span> obrigatório</div>
-<div class="mc-field-group">
-	<label for="mce-EMAIL">Endereço de email<span class="asterisk">*</span></label>
-	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-</div>
-<div id="mergeRow-gdpr" class="mergeRow gdpr-mergeRow content__gdprBlock mc-field-group">
-    <div class="content__gdpr">
-    	<br>
-        <label><b>Permissões de Marketing</b></label>
-        <p>Por favor, seleccione as vias em que aceita ouvir sobre o Get Me A Home:</p>
-        <fieldset class="mc_fieldset gdprRequired mc-field-group" name="interestgroup_field">
-		<label class="checkbox subfield" for="gdpr_7935">
-			<ul style="list-style: none;">
-				<li><input type="checkbox" id="gdpr_7935" name="gdpr[7935]" value="Y" class="av-checkbox"><span>Email informativo</span> </label></li>
-				<li><label class="checkbox subfield" for="gdpr_7939"><input type="checkbox" id="gdpr_7939" name="gdpr[7939]" value="Y" class="av-checkbox"><span>Contacto  directo</span> </label></li>
-				<li><label class="checkbox subfield" for="gdpr_7943"><input type="checkbox" id="gdpr_7943" name="gdpr[7943]" value="Y" class="av-checkbox"><span>Publicidade direccionada</span> </label></li>
-			</ul>
-        </fieldset>
-        <p>Você pode cancelar a subscrição a qualquer momento clicando no link no rodapé dos nossos emails.</p>
-    </div>
-    <div class="content__gdprLegal">
-        <p>Nós usamos <a target="_blank" href="https://mailchimp.com">MailChimp</a> como nossa plataforma de marketing. Ao clicar abaixo para se inscrever, você reconhece que as suas informações serão transferidas para o MailChimp. Saiba mais sobre as práticas de privacidade do MailChimp <a target="_blank" href="https://mailchimp.com/legal/">aqui</a>.</p>
-    </div>
-</div>
+		<div class="small-note"><span class="asterisk">*</span> obrigatório</div>
+		<div class="mc-field-group">
+			<label for="mce-EMAIL">Endereço de email<span class="asterisk">*</span></label>
+			<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+		</div>
+		<div id="mergeRow-gdpr" class="mergeRow gdpr-mergeRow content__gdprBlock mc-field-group">
+    		<div class="content__gdpr">
+    		<br>
+        	<label><b>Permissões de Marketing</b></label>
+        	<p>Por favor, seleccione as vias em que aceita ouvir sobre o Get Me A Home:</p>
+        	<fieldset class="mc_fieldset gdprRequired mc-field-group" name="interestgroup_field">
+			<label class="checkbox subfield" for="gdpr_7935">
+				<ul style="list-style: none;">
+					<li><input type="checkbox" id="gdpr_7935" name="gdpr[7935]" value="Y" class="av-checkbox"><span>Email informativo</span> </label></li>
+					<li><label class="checkbox subfield" for="gdpr_7939"><input type="checkbox" id="gdpr_7939" name="gdpr[7939]" value="Y" class="av-checkbox"><span>Contacto  directo</span> </label></li>
+					<li><label class="checkbox subfield" for="gdpr_7943"><input type="checkbox" id="gdpr_7943" name="gdpr[7943]" value="Y" class="av-checkbox"><span>Publicidade direccionada</span> </label></li>
+				</ul>
+        	</fieldset>
+        	<p>Você pode cancelar a subscrição a qualquer momento clicando no link no rodapé dos nossos emails.</p>
+    	</div>
+    	<div class="content__gdprLegal">
+        	<p>Nós usamos <a target="_blank" href="https://mailchimp.com">MailChimp</a> como nossa plataforma de marketing. Ao clicar abaixo para se inscrever, você reconhece que as suas informações serão transferidas para o MailChimp. Saiba mais sobre as práticas de privacidade do MailChimp <a target="_blank" href="https://mailchimp.com/legal/">aqui</a>.</p>
+    	</div>
+	</div>
 	<div id="mce-responses" class="clear">
 		<div class="response" id="mce-error-response" style="display:none"></div>
 		<div class="response" id="mce-success-response" style="display:none"></div>
@@ -280,9 +261,73 @@
 </form>
 </div>
 <!--End mc_embed_signup-->
-                    </div>
-                </div>
-			</div>
+                    </div> <!-- col -->
+                </div> <!-- row -->
+
+<div id="mbway-basic" class="overlay">
+	<div class="popup">
+		<h2>MB Way</h2>
+		<a class="close" href="#plans">&times;</a>
+		<div>
+			<form action="http://localhost:5000/payment/mbway" method="POST">
+				<div>
+					<label for="mbway-Email">Email para associação de conta:</label>
+					<input type="email" value="" name="Email" id="mbway-Email">
+					<label for="mbway-Contact">Número de telemóvel associado ao MB Way:<span class="asterisk">*</span></label>
+					<input type="text" value="" name="Contact" id="mbway-Contact">
+					<input type="hidden" value="Basic" name="Plan" id="mbway-Plan">
+				</div>
+				<br>
+				<input type="submit" value="Enviar" name="send" class="button">
+			</form>
+			<div class="small-note"><span class="asterisk">*</span> O número de telemóvel apenas será utilizado para questões de pagamento por MB Way.</div>
+		</div>
+	</div>
+</div>
+
+<div id="mbway-standard" class="overlay">
+	<div class="popup">
+		<h2>MB Way</h2>
+		<a class="close" href="#plans">&times;</a>
+		<div>
+			<form action="http://localhost:5000/payment/mbway" method="POST">
+				<div>
+					<label for="mbway-Email">Email para associação de conta:</label>
+					<input type="email" value="" name="Email" id="mbway-Email">
+					<label for="mbway-Contact">Número de telemóvel associado ao MB Way:<span class="asterisk">*</span></label>
+					<input type="text" value="" name="Contact" id="mbway-Contact">
+					<input type="hidden" value="Standard" name="Plan" id="mbway-Plan">
+				</div>
+				<br>
+				<input type="submit" value="Enviar" name="send" class="button">
+			</form>
+			<div class="small-note"><span class="asterisk">*</span> O número de telemóvel apenas será utilizado para questões de pagamento por MB Way.</div>
+		</div>
+	</div>
+</div>
+
+<div id="mbway-premium" class="overlay">
+	<div class="popup">
+		<h2>MB Way</h2>
+		<a class="close" href="#plans">&times;</a>
+		<div>
+			<form action="http://localhost:5000/payment/mbway" method="POST">
+				<div>
+					<label for="mbway-Email">Email para associação de conta:</label>
+					<input type="email" value="" name="Email" id="mbway-Email">
+					<label for="mbway-Contact">Número de telemóvel associado ao MB Way:<span class="asterisk">*</span></label>
+					<input type="text" value="" name="Contact" id="mbway-Contact">
+					<input type="hidden" value="Premium" name="Plan" id="mbway-Plan">
+				</div>
+				<br>
+				<input type="submit" value="Enviar" name="send" class="button">
+			</form>
+			<div class="small-note"><span class="asterisk">*</span> O número de telemóvel apenas será utilizado para questões de pagamento por MB Way.</div>
+		</div>
+	</div>
+</div>
+                
+			</div> <!-- container -->
 		</section>
 	</div>
 
@@ -290,7 +335,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<ul class="navbar-nav ml-auto"><li class="nav-item active"><a href="./" rel="" class="nav-link">Home</a></li><li class="nav-item"><a href="markdown/" rel="" class="nav-link">FAQ</a></li></ul>
+					<ul class="navbar-nav ml-auto"><li class="nav-item active"><a href="./" rel="" class="nav-link">Home</a></li><li class="nav-item"><a href="faq/" rel="" class="nav-link">FAQ</a></li></ul>
 					&copy; 2018 Get Me A Home <a href="#" id="rw_email_contact"><b>Contacte-nos</b></a><script type="text/javascript">var _rwObsfuscatedHref0 = "mai";var _rwObsfuscatedHref1 = "lto";var _rwObsfuscatedHref2 = ":ge";var _rwObsfuscatedHref3 = "tme";var _rwObsfuscatedHref4 = "aho";var _rwObsfuscatedHref5 = "me@";var _rwObsfuscatedHref6 = "pro";var _rwObsfuscatedHref7 = "ton";var _rwObsfuscatedHref8 = "mai";var _rwObsfuscatedHref9 = "l.c";var _rwObsfuscatedHref10 = "om";var _rwObsfuscatedHref = _rwObsfuscatedHref0+_rwObsfuscatedHref1+_rwObsfuscatedHref2+_rwObsfuscatedHref3+_rwObsfuscatedHref4+_rwObsfuscatedHref5+_rwObsfuscatedHref6+_rwObsfuscatedHref7+_rwObsfuscatedHref8+_rwObsfuscatedHref9+_rwObsfuscatedHref10; document.getElementById("rw_email_contact").href = _rwObsfuscatedHref;</script>
 				</div>
 			</div>
